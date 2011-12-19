@@ -108,7 +108,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -120,6 +120,12 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+THIRD_PARTY_APPS = (
+    'debug_toolbar',
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
