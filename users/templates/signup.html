@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>SignUp Form</h1>
+{{form.error}}
+<form method='POST' action='{% url signup %}'>{% csrf_token %}
+{{form}}
+<input type='submit' class='btn primary' value='Create my Account'/>
+</form>
+{% endblock %}

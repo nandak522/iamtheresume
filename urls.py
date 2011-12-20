@@ -15,6 +15,11 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    (r'^$', 'users.views.view_homepage', {'homepage_template':'homepage.html'}, 'homepage'),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+)
+
+urlpatterns += patterns('users.views',
+    (r'^$', 'view_homepage', {'homepage_template':'homepage.html'}, 'homepage'),
+    (r'^signup/$', 'view_signup', {'signup_template':'signup.html'}, 'signup'),
+    #(r'^login/$', 'view_login', {'login_template':'login.html'}, 'login'),
 )
