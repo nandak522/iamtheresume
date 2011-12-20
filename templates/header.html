@@ -1,0 +1,14 @@
+<a href='/' class='brand'>I Am The <span class='blue'>Resume</a>
+<!-- 
+<ul class='nav pull-left'>
+    <>
+</ul>
+-->
+<ul class='nav secondary-nav'>
+    {% if user.is_authenticated %}
+    <li><a href='/'>{{welcome_message}}</a></li>
+    {% else %}
+    <li><a href='/signup/'>SignUp</a></li>
+    <li><a href='/login/'>Login</a></li>
+    {% endif %}
+</ul>
