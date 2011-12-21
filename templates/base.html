@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{% block title %}{% endblock %} - I-Am-The-Resume</title>
+{%block css%}
+{%if debug%}
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/thirdparty/bootstrap/bootstrap.css"/>
+{%else%}
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/thirdparty/bootstrap/bootstrap.min.css"/>
+{%endif%}
+<link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/custom/css/master.css"/>
+{%endblock%}
+{%block extrastyle%}
+{%endblock%}
+</head>
+<body>
+    <div class='topbar'>
+        <div class='fill'>
+            <div class='container'>
+                {%include 'header.html'%}
+            </div>
+        </div>
+    </div>
+    <div class='container'>
+        <div id='content'>
+        {% block content %}
+        {% endblock %}
+        </div>
+    </div>
+<footer>
+    <div class='container'>
+        {%include 'footer.html'%}
+    </div>
+</footer>
+{%if debug%}
+<script type='text/javascript' src='/site_media/thirdparty/jquery/jquery-1.7.1.min.js'></script>
+{%else%}
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+{%endif%}
+<script type='text/javascript' src='/site_media/thirdparty/bootstrap/js/bootstrap-twipsy.js'></script>
+<script type='text/javascript' src='/site_media/thirdparty/bootstrap/js/bootstrap-dropdown.js'></script>
+<script type='text/javascript'>
+$(document).ready(function () {
+    $('.topbar-menus').dropdown();
+});
+</script>
+{%block extrajs%}{%endblock%}
+</body>
+</html>
