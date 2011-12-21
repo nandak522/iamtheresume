@@ -21,5 +21,6 @@ urlpatterns = patterns('',
 urlpatterns += patterns('users.views',
     (r'^$', 'view_homepage', {'homepage_template':'homepage.html'}, 'homepage'),
     (r'^signup/$', 'view_signup', {'signup_template':'signup.html'}, 'signup'),
-    #(r'^login/$', 'view_login', {'login_template':'login.html'}, 'login'),
+    (r'^login/$', 'view_login', {'login_template':'login.html'}, 'login'),
+    (r'^logout/$', 'view_logout', {'logout_template': 'logout.html'}, 'logout'),
 )

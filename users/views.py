@@ -17,7 +17,7 @@ def view_homepage(request, homepage_template):
         return response(request, homepage_template, {'message':'Welcome %s' % user.email})
     return response(request, homepage_template, {'message':'You are Anonymous'})
 
-#TODO:@anonymous_user
+@anonymoususer
 def view_signup(request, signup_template):
     if request.method == 'POST':
         form = SignUpForm(post_data(request))
@@ -42,7 +42,37 @@ def _let_user_login(request, user, email, password, next=''):
     return HttpResponseRedirect(redirect_to='/')
 
 def view_logout(request, logout_template):
+    #TODO:logout_template is not used. It should be
     django_logout(request)
     #from users.messages import USER_LOGOUT_SUCCESSFUL
     #messages.info(request, USER_LOGOUT_SUCCESSFUL)
     return HttpResponseRedirect(redirect_to='/')
+
+@anonymoususer
+def view_login(request, login_template, next=''):
+    if request.method == 'POST':
+        data = post_data(request)
+        next = data.get('next') if not next else next 
+        form = LoginForm(data)
+        if form.is_valid():
+            try:
+                userprofile = UserProfile.objects.get(user__email=form.cleaned_data.get('email'),
+                                                      user__is_active=True)
+            except UserProfile.DoesNotExist:
+                #from users.messages import USER_LOGIN_FAILURE
+                #messages.error(request, USER_LOGIN_FAILURE)
+                return response(request, login_template, {'form': form, 'next': next})
+            if not userprofile.check_password(form.cleaned_data.get('password')):
+                #from users.messages import USER_LOGIN_FAILURE
+                #messages.error(request, USER_LOGIN_FAILURE)
+                return response(request, login_template, {'form': form, 'next': next})
+            #from users.messages import USER_LOGIN_SUCCESSFUL
+            #messages.success(request, USER_LOGIN_SUCCESSFUL)
+            return _let_user_login(request,
+                                   userprofile.user,
+                                   email=form.cleaned_data.get('email'),
+                                   password=form.cleaned_data.get('password'),
+                                   next=next)
+    else:
+        form = LoginForm()
+    return response(request, login_template, {'form': form, 'next': next})

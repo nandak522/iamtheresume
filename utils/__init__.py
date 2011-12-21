@@ -40,6 +40,5 @@ def useful_params_in_context(request):
     params['site'] = Site.objects.get(id=settings.SITE_ID)
     if request.user.is_authenticated():
         params['userprofile'] = request.user.get_profile()
-        params['userprofilegroup'] = request.user.get_profile().group_name
     #TODO:the entire params dict needs to be cached
     return params

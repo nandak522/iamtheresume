@@ -6,7 +6,8 @@
 -->
 <ul class='nav secondary-nav'>
     {% if user.is_authenticated %}
-    <li><a href='/'>{{welcome_message}}</a></li>
+    <li><a href='/'>Welcome {{userprofile.name}}</a></li>
+    <li><a href='/logout/'>Logout</a></li>
     {% else %}
     <li><a href='/signup/'>SignUp</a></li>
     <li><a href='/login/'>Login</a></li>

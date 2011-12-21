@@ -6,7 +6,7 @@ class SignUpForm(forms.Form):
     name = forms.CharField(required=True, max_length=50)
     email = forms.EmailField(required=True, max_length=75)
     password = forms.CharField(required=True, min_length=6, max_length=30, widget=forms.PasswordInput())
-
+    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         try:

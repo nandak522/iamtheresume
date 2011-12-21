@@ -31,3 +31,12 @@ class UserProfile(BaseModel):
     
     def __unicode__(self):
         return self.name
+
+    def check_password(self, password):
+        return self.user.check_password(password)
+    
+    def update_password(self, new_password):
+        self.user.set_password(new_password)
+        self.user.save()
+    
+    set_password = update_password 
