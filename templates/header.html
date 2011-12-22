@@ -1,10 +1,39 @@
 <a href='/' class='brand'>I Am The <span class='blue'>Resume</a>
-<!-- 
-<ul class='nav pull-left'>
-    <>
+<ul class='topbar-menus pull-left'>
+    <li class='dropdown'>
+        <a href='#' class='dropdown-toggle'>Browse</a>
+        <ul class='dropdown-menu'>
+            <li><a href='/tasks/'>Tasks</a></li>
+            <li><a href='/questions/'>Questions</a></li>
+            <li><a href='/people/'>People</a></li>
+            <li><a href='/colleges/'>Colleges</a></li>
+            <li><a href='/companies/'>Companies</a></li>
+        </ul>
+    </li>
+    {% if user.is_authenticated %}
+    <li class='dropdown'>
+        <a href='#' class='dropdown-toggle'>Want</a>
+        <ul class='dropdown-menu'>
+            <li><a href='/tasks/'>Pick a Task</a></li>
+            <li><a href='/quest/ask/'>Ask a Question</a></li>
+            <li><a href='/quest/answer/'>Answer a Question</a></li>
+        </ul>
+    </li>
+    <li class='dropdown'>
+        <a href='#' class='dropdown-toggle'>My</a>
+        <ul class='dropdown-menu'>
+            <li><a href='/mytasks/'>My Tasks</a></li>
+            <li><a href='/myquestions/'>My Questions</a></li>
+            <li><a href='/myanswers/'>My Answers</a></li>
+            <li class='divider'></li>
+            <li><a href='/myprofile/'>My Profile</a></li>
+            <li><a href='/settings/'>My Settings</a></li>
+            <li><a href='/mybadges/'>My Badges</a></li>
+        </ul>
+    </li>
+    {% endif %}
 </ul>
--->
-<ul class='nav secondary-nav'>
+<ul class='nav secondary-nav topbar-menus'>
     {% if user.is_authenticated %}
     <li><a href='/'>Welcome {{userprofile.name}}</a></li>
     <li><a href='/logout/'>Logout</a></li>
