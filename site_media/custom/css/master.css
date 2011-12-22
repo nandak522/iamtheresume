@@ -3,7 +3,7 @@
 .center{text-align:center;}
 footer .container{text-align:center;}
 #content{padding-top:60px;}
-ul.errorlist{display:inline;list-style:none;}
-ul.errorlist li{color:#B94A48;}
+ul.errorlist{display:inline;list-style:none;color:#B94A48;}
+.alert-message.error{color:#FFF;}
 .topbar-menus li.dropdown{margin:0 1em;}
 .topbar .fill{border-bottom:2px solid #105Fb6;}

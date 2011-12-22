@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if form.errors %}
+<div class='alerts'>
+    <div class='alert-message error fade in' data-alert='alert'>
+        <a href='#' class='close'>x</a>
+        <p>Invalid SignUp Information</p>
+    </div>
+</div>
+{% endif %}
 <form method='POST' action='{% url signup %}'>{% csrf_token %}
 <div class='clearfix {% if form.name.errors %}error{% endif %}'>
-    <label for='id_name'>Name</label>
+    {{form.name.label_tag}}
     <div class='input'>
-        {{form.name}}{{form.name.errors}}
+        {{form.name}}{{form.name.errors.0}}
     </div>
 </div>
 <div class='clearfix {% if form.email.errors %}error{% endif %}'>
-    <label for='id_email'>Email</label>
+    {{form.email.label_tag}}
     <div class='input'>
-        {{form.email}}{{form.email.errors}}
+        {{form.email}}{{form.email.errors.0}}
     </div>
 </div>
 <div class='clearfix {% if form.password.errors %}error{% endif %}'>
-    <label for='id_password'>Password</label>
+    {{form.password.label_tag}}
     <div class='input'>
-        {{form.password}}{{form.password.errors}}
+        {{form.password}}{{form.password.errors.0}}
     </div>
 </div>
 <div class='clearfix'>
@@ -25,4 +33,8 @@
     </div>
 </div>
 </form>
+{% endblock %}
+{% block extrajs %}
+<script type='text/javascript' src='/site_media/thirdparty/bootstrap/js/bootstrap-alerts.js'></script>
+<script type='text/javascript'>$('#id_name').focus();</script>
 {% endblock %}
