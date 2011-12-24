@@ -28,26 +28,26 @@ Goals:
 
 Requirements:
     1) Authentication System (for Students basically)
-        Simple Signup-Login
-        One click Viral-Inviting System
+        Simple Signup-Login (Done)
+        One click Viral-Inviting System (Pending)
 
-    2) Discussion/Q&A System
+    2) Discussion/Q&A System (Pending)
         Raise a Question
         Answer a Question
 
-    3) Profile/Automagic-Resume System
+    3) Profile/Automagic-Resume System (Pending)
 
-    4) Task System
+    4) Task System (In-Progress)
         Able to pick tasks based on Complexity
         Submit solutions to the tasks
 
-    5) Aggregating System
+    5) Aggregating System (Pending)
         For Reports/Groups
             Top Students in XYZ college
             Top Students in Bangalore
             Top Students in Python
 
-    6) Rewarding System
+    6) Rewarding System (Pending)
         (Cumulative) Scoring system based on Tasks picked & solved over 
             the course of time
         Badges
@@ -56,4 +56,4 @@ Requirements:
             In alpha:
                 A student contact a company person if he/she gets X points only
 
-    7) Companies System
+    7) Companies System (Pending)
