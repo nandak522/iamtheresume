@@ -1,0 +1,12 @@
+{% if messages %}
+<div class='row'>
+<div class='alerts offset4 span8'>
+    {% for message in messages %}
+        <div class='alert-message {{message.tags}} fade in' data-alert='alert'>
+            <a href='#' class='close'>x</a>
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{%autoescape off%}{{ message }}{%endautoescape%}</p>
+        {% endfor %}
+        </div>
+</div>
+</div>
+{% endif %}

@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse as url_reverse
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import get_object_or_404
 from users.decorators import anonymoususer, is_admin
+from django.contrib import messages
 
 def view_homepage(request, homepage_template):
     user = request.user
@@ -30,6 +31,9 @@ def view_signup(request, signup_template):
                                    userprofile.user,
                                    email=signup_data.get('email'),
                                    password=signup_data.get('password'))
+        else:
+            from users.messages import USER_SIGNUP_FAILURE
+            messages.error(request, USER_SIGNUP_FAILURE)
     else:
         form = SignUpForm()
     return response(request, signup_template, {'form':form})
@@ -44,8 +48,8 @@ def _let_user_login(request, user, email, password, next=''):
 def view_logout(request, logout_template):
     #TODO:logout_template is not used. It should be
     django_logout(request)
-    #from users.messages import USER_LOGOUT_SUCCESSFUL
-    #messages.info(request, USER_LOGOUT_SUCCESSFUL)
+    from users.messages import USER_LOGOUT_SUCCESSFUL
+    messages.info(request, USER_LOGOUT_SUCCESSFUL)
     return HttpResponseRedirect(redirect_to='/')
 
 @anonymoususer

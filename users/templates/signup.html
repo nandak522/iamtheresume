@@ -1,38 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if form.errors %}
-<div class='alerts'>
-    <div class='alert-message error fade in' data-alert='alert'>
-        <a href='#' class='close'>x</a>
-        <p>Invalid SignUp Information</p>
+<div class='row'>
+    <div class='well offset4 span8'>
+        <form method='POST' action='{% url signup %}'>{% csrf_token %}
+            <div class='clearfix {% if form.name.errors %}error{% endif %}'>
+                {{form.name.label_tag}}
+                <div class='input'>
+                    {{form.name}}
+                    {% if form.name.errors %}
+                    <p>{{ form.name.errors.as_text }}
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class='clearfix {% if form.email.errors %}error{% endif %}'>
+                {{form.email.label_tag}}
+                <div class='input'>
+                    {{form.email}}
+                    {% if form.email.errors %}
+                    <p>{{ form.email.errors.as_text }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class='clearfix {% if form.password.errors %}error{% endif %}'>
+                {{form.password.label_tag}}
+                <div class='input'>
+                    {{form.password}}
+                    {% if form.password.errors %}
+                    <p>{{ form.password.errors.as_text }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class='clearfix'>
+                <div class='input'>
+                    <input type='submit' class='btn primary' value='Create my Account'/>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-{% endif %}
-<form method='POST' action='{% url signup %}'>{% csrf_token %}
-<div class='clearfix {% if form.name.errors %}error{% endif %}'>
-    {{form.name.label_tag}}
-    <div class='input'>
-        {{form.name}}{{form.name.errors.0}}
-    </div>
-</div>
-<div class='clearfix {% if form.email.errors %}error{% endif %}'>
-    {{form.email.label_tag}}
-    <div class='input'>
-        {{form.email}}{{form.email.errors.0}}
-    </div>
-</div>
-<div class='clearfix {% if form.password.errors %}error{% endif %}'>
-    {{form.password.label_tag}}
-    <div class='input'>
-        {{form.password}}{{form.password.errors.0}}
-    </div>
-</div>
-<div class='clearfix'>
-    <div class='input'>
-        <input type='submit' class='btn primary' value='Create my Account'/>
-    </div>
-</div>
-</form>
 {% endblock %}
 {% block extrajs %}
 <script type='text/javascript' src='/site_media/thirdparty/bootstrap/js/bootstrap-alerts.js'></script>
